@@ -1,0 +1,36 @@
+Overview
+
+Things we will be doing 
+More routing/guard/pipes/drag drop/PWA/Service Workers/Forms
+Deploying- environments, lazy loading 
+
+components modules, --> something like library
+
+
+https://getbootstrap.com/docs/4.3/getting-started/theming/   this is for scss
+
+creating math feature 
+ng g m features/math
+ng g c features/math/math --flat=true
+
+installing redux
+-----------------------
+npm i @ngrx/store @ngrx/store-devtools @ngrx/effects @ngrx/entity
+
+
+ngrx 
+----------
+select 
+dispatch -> provide an action
+
+create an application state 
+
+
+added following in app.modules
+
+import { StoreModule} from '@ngrx/store' ;
+import { StoreDevtoolsModule} from '@ngrx/store-devtools' ;
+import {reducers} from './reducers'
+
+
+https://github.com/microsoft/vscode-recipes/tree/master/Angular-CLI 
