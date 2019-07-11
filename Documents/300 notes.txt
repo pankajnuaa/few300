@@ -1,15 +1,15 @@
 Overview
 
-Things we will be doing 
+Things we will be doing
 More routing/guard/pipes/drag drop/PWA/Service Workers/Forms
-Deploying- environments, lazy loading 
+Deploying- environments, lazy loading
 
 components modules, --> something like library
 
 
 https://getbootstrap.com/docs/4.3/getting-started/theming/   this is for scss
 
-creating math feature 
+creating math feature
 ng g m features/math
 ng g c features/math/math --flat=true
 
@@ -18,12 +18,12 @@ installing redux
 npm i @ngrx/store @ngrx/store-devtools @ngrx/effects @ngrx/entity
 
 
-ngrx 
+ngrx
 ----------
-select 
+select
 dispatch -> provide an action
 
-create an application state 
+create an application state
 
 
 added following in app.modules
@@ -33,4 +33,16 @@ import { StoreDevtoolsModule} from '@ngrx/store-devtools' ;
 import {reducers} from './reducers'
 
 
-https://github.com/microsoft/vscode-recipes/tree/master/Angular-CLI 
+https://github.com/microsoft/vscode-recipes/tree/master/Angular-CLI
+
+https://github.com/JeffryGonzalez/few300-jul19-cle
+\\ND435528\Dev  -> Jeff's directory
+state- > all known variables in aplication
+
+library vs framework
+you use library in your code
+you code in framework
+
+
+object destructring
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment

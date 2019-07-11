@@ -1,4 +1,15 @@
-<div class="card">
+<div class="alert alert-danger"
+     *ngIf="(gameOver$ | async)">
+  <h3>Game over you loose!</h3>
+  <input type="button"
+         class="btn btn-primary"
+         value="Play again"
+         (click)="playAgain()">
+
+</div>
+
+<div class="card"
+     *ngIf="!(gameOver$ | async)">
   <div class="card-body">
     <h5 class="card-title">Question {{(model$ | async)?.num}} of {{(model$ | async)?.of}}</h5>
 
@@ -23,6 +34,3 @@
            value="Finish Game">
 
   </div>
-  <pre>
-  {{(model$ | async) | json}}
-</pre>
