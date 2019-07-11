@@ -1,6 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import * as questionAction from '../actions/questions.actions';
+import { tassign } from 'tassign';
 export interface QuestionEntity {
   id: number;
   question: string;
@@ -13,7 +14,7 @@ export interface MathQuestionsState extends EntityState<QuestionEntity> {
 }
 
 const initialState: MathQuestionsState = {
-  currentQuestionId: 1,
+  currentQuestionId: 4,
   missedQuestions: [],
   ids: [1, 2, 3, 4, 5],
   entities: {
@@ -52,12 +53,12 @@ export const adapter = createEntityAdapter<QuestionEntity>();
 //   return state;
 // }// this will be replaced with line below
 
-export const reducer = createReducer(
+const mathreducer = createReducer(
   initialState,
   on(questionAction.playAgain, () => initialState),
   on(questionAction.answerProvided, (state, action) => {
     // we need to kow if the guess is the answer tot he current question
-    let tempState = { ...state };
+    let tempState = { ...state }; // make shallow copy of this
 
     const currentQuestion = state.entities[state.currentQuestionId];
 
@@ -65,8 +66,13 @@ export const reducer = createReducer(
       // add the questionId and their guess to the array of missedQuestions
       tempState = { ...tempState, missedQuestions: [...state.missedQuestions, { id: currentQuestion.id, providedAnswer: action.guess }] };
     }
-    const newState = ({ ...tempState, currentQuestionId: state.currentQuestionId + 1 });
+    // const newState = ({ ...tempState, currentQuestionId: state.currentQuestionId + 1 });
+    const newState = tassign(tempState, { currentQuestionId: state.currentQuestionId + 1 });
     return newState;
   })
 );
+
+export function reducer(state: MathQuestionsState | undefined, action: Action) {
+  return mathreducer(state, action);
+}
 
