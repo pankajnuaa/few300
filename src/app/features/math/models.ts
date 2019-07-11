@@ -5,13 +5,13 @@ export interface QuestionModel {
 }
 export interface ScoresModel {
   scores: ScoreLineModel[];
-  numberOfWuestions: number;
+  numberOfQuestions: number;
   numberCorrect: number;
   numberWrong: number;
 }
 
 export interface ScoreLineModel {
-  id: number;
+  num: number;
   question: string;
   answer: number;
   incorrect: boolean;

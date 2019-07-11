@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionModel } from '../../models';
-import { MathState, selectQuestionModel, selectEndOfQuestions, selectGameOverman } from '../../reducers';
+import { MathState, selectQuestionModel, selectAtEndOfQuestions, selectGameOverMan } from '../../reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { answerProvided, playAgain } from '../../actions/questions.actions';
@@ -22,8 +22,8 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
     this.model$ = this.store.select(selectQuestionModel);
-    this.atEnd$ = this.store.select(selectEndOfQuestions);
-    this.gameOver$ = this.store.select(selectGameOverman);
+    this.atEnd$ = this.store.select(selectAtEndOfQuestions);
+    this.gameOver$ = this.store.select(selectGameOverMan);
   }
   next(guessE1: HTMLInputElement) {
     const guess = guessE1.valueAsNumber;
