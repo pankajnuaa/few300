@@ -49,3 +49,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Dest
 
 npm i tassign 
 ng lint to run the tslint
+
+to deploy tp server 
+PS C:\dev\300\few300\dist\few300> npm i -g http-server
+
+
+how to do git merge 
+create a new bran ch first , then add code 
+commit it 
+switch back to master 
+now we merge 
+hit f1- git merge  -> pick the merge 
