@@ -60,3 +60,46 @@ commit it
 switch back to master 
 now we merge 
 hit f1- git merge  -> pick the merge 
+
+Route Guards
+ng g guard features/math/guards/game-over
+
+angular schematics 
+----------------------
+cli does code generation 
+instruction for angular built new assets
+
+
+
+progressive web apps
+
+
+for api 
+---------
+get the api locally 
+npm install 
+and npm run start:dev
+
+
+
+// no more redux
+
+
+progressive web apps
+ng add @angular/pwa --project few300
+
+code splitting is part of lazy loading 
+ng build --prod=true => optimize the build 
+sibling routes, 
+only file that is in server is index.html 
+routeguard -> validate access
+rxjs operator to catch errors 
+you don't get safet from browser in typescript 
+
+
+
+httpIntercepter -> allow you to observe and modify http responses
+pwa -> 
+service works , thee are downloaded in browser and run in different thread
+dont get access to dom 
+communication with api with fetch 

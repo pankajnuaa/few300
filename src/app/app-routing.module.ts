@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'not-found',
     component: FourOhFourComponent
   }, {
+    path: 'admin',
+    loadChildren: () => import('./features/admin/admin.module').then(mod => mod.AdminModule)
+  },
+  {
     path: '**',
     redirectTo: 'not-found'
   }

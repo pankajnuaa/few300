@@ -1,16 +1,22 @@
 
 export const featureName = 'mathFeature';
 import * as fromQuestions from './questions.reducers';
+import * as fromSavedScores from './saved-scores.reducer';
 
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { QuestionModel, ScoresModel } from '../models';
+import * as fromUihints from './ui-hints.reducer';
 
 export interface MathState {
   questions: fromQuestions.MathQuestionsState;
+  savedScores: fromSavedScores.SavedScoresState;
+  ui: fromUihints.UiHintsState;
 }
 
 export const reducers = {
-  questions: fromQuestions.reducer
+  questions: fromQuestions.reducer,
+  savedScores: fromSavedScores.savedScoresreducer,
+  ui: fromUihints.reducer
 };
 
 
@@ -20,6 +26,7 @@ const selectMathFeature = createFeatureSelector<MathState>(featureName);
 // 2. Create a selector for each "branch" of the MathState (e.g., questions)
 
 const selectQuestionsBranch = createSelector(selectMathFeature, m => m.questions);
+const selectSavedScoresBranch = createSelector(selectMathFeature, m => m.savedScores);
 
 // 3. Selectors that are "helpers" to get the data you need for step 4.
 const selectCurrentQuestionId = createSelector(selectQuestionsBranch, q => q.currentQuestionId);
@@ -29,13 +36,14 @@ const {
   selectAll: selectAllQuestions,
   selectEntities: selectQuestionEntities } = fromQuestions.adapter.getSelectors(selectQuestionsBranch);
 
+const { selectAll: selectAllSavedScores } = fromSavedScores.adapter.getSelectors(selectSavedScoresBranch);
 const selectSelectedQuestion = createSelector(
   selectQuestionEntities,
   selectCurrentQuestionId,
   (entities, current) => entities[current]
 );
 // 4. Create a selector for each component model
-
+export const selectSavedScoresModel = createSelector(selectAllSavedScores, s => s);
 // TODO Create a selector that returns a QuestionModel
 // current id, how many total, question for the current question
 
@@ -101,6 +109,17 @@ export const selectScoresModel = createSelector(
     };
     return result;
   }
+);
+
+export const selectHideScores = createSelector(
+  selectTotalNumberOfQuestions,
+  selectCurrentQuestionId,
+  (total, current) => (total + 1) !== current
+);
+
+export const selectHideGame = createSelector(
+  selectHideScores,
+  (x) => !x
 );
 
 /*

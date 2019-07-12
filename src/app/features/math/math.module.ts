@@ -8,6 +8,9 @@ import { StoreModule } from '@ngrx/store';
 import { featureName, reducers } from './reducers';
 import { ScoreListComponent } from './components/score-list/score-list.component';
 import { GameOverGuard } from './guards/game-over.guard';
+import { SavedScoresComponent } from './components/saved-scores/saved-scores.component';
+import { EffectsModule } from '@ngrx/effects';
+import { SavedScoresEffects } from './effects/saved-scores.effects';
 
 
 
@@ -23,17 +26,21 @@ const routes: Routes = [{
       path: 'scores',
       component: ScoresComponent,
       canActivate: [GameOverGuard]
+    }, {
+      path: 'saved-scores',
+      component: SavedScoresComponent
     }
   ]
 }
 ];
 
 @NgModule({
-  declarations: [MathComponent, GameComponent, ScoresComponent, ScoreListComponent],
+  declarations: [MathComponent, GameComponent, ScoresComponent, ScoreListComponent, SavedScoresComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature(featureName, reducers)
+    StoreModule.forFeature(featureName, reducers),
+    EffectsModule.forFeature([SavedScoresEffects])
   ]
 })
 export class MathModule { }
